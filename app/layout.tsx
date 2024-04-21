@@ -15,8 +15,24 @@ import getSongsByUserId from '@/actions/getSongsByUserId'
 const font = Figtree({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Spotify Clone',
-  description: 'Listen to music!',
+  metadataBase: new URL('https://music.mdcdev.me'),
+  title: 'Music App',
+  description: 'Listen to your favorite songs',
+  viewport: 'width=device-width, initial-scale=1',
+  themeColor: '#000000',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://music.mdcdev.me',
+    siteName: 'Music App',
+    title: 'Music App',
+    description: 'Listen to your favorite songs',
+    images: "https://api.microlink.io/?url=https://music.mdcdev.me&screenshot=true&meta=false&embed=screenshot.url&waitFor=1000",
+  },
+  twitter: {
+    creator: '@mdc_dev',
+    images: "https://api.microlink.io/?url=https://music.mdcdev.me&screenshot=true&meta=false&embed=screenshot.url&waitFor=1000",
+  },
 }
 
 export const revalidate = 0;
