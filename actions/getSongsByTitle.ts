@@ -13,10 +13,12 @@ const getSongsByTitle = async (title: string): Promise<Song[]> => {
         return allSongs;
     }
 
+    const searchTerm = title.toLowerCase();
+
     const { data, error } = await supabase
         .from('songs')
         .select('*')
-        .like('title', `%${title}%`)
+        .ilike('title', `%${searchTerm}%`)
         .order('created_at', { ascending: false })
 
     if (error) {
