@@ -1,7 +1,26 @@
-import Header from "@/components/Header";
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
 import AccountContent from "./components/AccountContent";
 
+import Header from "@/components/Header";
+
+import { useUser } from "@/hooks/useUser";
+
 const Account = () => {
+
+    const router = useRouter();
+
+    const { user } = useUser();
+
+    useEffect(() => {  
+        if(!user) {
+            router.replace('/');
+        }
+    }, [user, router]);
+
     return ( 
         <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
             <Header className="from-bg-neutral-900">
