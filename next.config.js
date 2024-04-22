@@ -2,7 +2,9 @@
 const nextConfig = {
     images: {
         domains: [
-            "lujxopdbufzhugdniqmk.supabase.co"
+            "lujxopdbufzhugdniqmk.supabase.co",
+            "i.scdn.co",
+            "cdn.discordapp.com"
         ]
     }
 }

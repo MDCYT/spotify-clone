@@ -8,6 +8,7 @@ import { BiSearch } from "react-icons/bi";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { FaUserAlt } from "react-icons/fa";
 import { toast } from "react-hot-toast";
+import Image from "next/image";
 
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
@@ -29,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({
     const router = useRouter();
 
     const supabaseClient = useSupabaseClient();
-    const { user } = useUser();
+    const { user, userDetails } = useUser();
 
     const handleLogout = async () => {
         const { error } = await supabaseClient.auth.signOut();
@@ -76,7 +77,17 @@ const Header: React.FC<HeaderProps> = ({
                                 Logout
                             </Button>
                             <Button onClick={() => router.push('/account')} className="bg-white">
-                                <FaUserAlt/>
+                                { userDetails?.avatar_url ? (
+                                    <Image
+                                        src={userDetails.avatar_url}
+                                        alt="avatar"
+                                        width={20}
+                                        height={20}
+                                        className="rounded-full"
+                                    />
+                                ) : (
+                                    <FaUserAlt/>
+                                )}
                             </Button>
                         </div>
                     ) : (
